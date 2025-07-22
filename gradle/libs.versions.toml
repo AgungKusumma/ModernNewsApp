@@ -10,6 +10,21 @@ material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
 
+kaptVersion         = "1.6.20"
+kotlinPlugin        = "1.8.10"
+fragment            = "1.5.6"
+navigation          = "2.5.3"
+retrofit            = "2.9.0"
+hilt                = "2.49"
+gson                = "2.9.0"
+interceptor         = "4.9.3"
+timber              = "5.0.1"
+glide               = "4.15.1"
+viewmodel           = "2.8.7"
+dataStore           = "1.0.0"
+lottieAnimation     = "6.6.2"
+room                = "2.5.2"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -20,7 +35,28 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+fragment                    = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
+navigation                  = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+navigationUi                = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+retrofit                    = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+hilt                        = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hiltSupport                 = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+gson                        = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gson" }
+interceptor                 = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "interceptor" }
+timber                      = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+glide                       = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glideCompiler               = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+viewmodel                   = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
+livedata                    = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "viewmodel" }
+dataStore                   = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore" }
+lottie                      = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieAnimation" }
+roomRuntime                 = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+roomCompiler                = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+roomKtx                     = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+dagger-hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kaptVersion" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlinPlugin"  }
