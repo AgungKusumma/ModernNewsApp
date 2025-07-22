@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ModernNewsApp</string>
+
+    <!-- Big News -->
+    <string name="big_news_title">News Title</string>
+    <string name="big_news_date">Sen, 25 April 20.34</string>
+
+    <!-- Small News -->
+    <string name="small_news_title">Small News Title</string>
 </resources>

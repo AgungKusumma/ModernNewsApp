@@ -24,6 +24,7 @@ viewmodel           = "2.8.7"
 dataStore           = "1.0.0"
 lottieAnimation     = "6.6.2"
 room                = "2.5.2"
+shimmer             = "0.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -53,6 +54,7 @@ lottie                      = { group = "com.airbnb.android", name = "lottie", v
 roomRuntime                 = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 roomCompiler                = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 roomKtx                     = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+shimmer                     = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

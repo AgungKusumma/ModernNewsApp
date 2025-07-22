@@ -55,6 +55,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Fragment
+    implementation(libs.fragment)
+
+    // Navigation
+    implementation(libs.navigation)
+    implementation(libs.navigationUi)
+
     // Hilt
     implementation(libs.hilt)
     kapt(libs.hiltSupport)
@@ -66,6 +73,13 @@ dependencies {
 
     // ViewModel
     implementation(libs.viewmodel)
+
+    // Glide
+    implementation(libs.glide)
+    kapt(libs.glideCompiler)
+
+    // Skeleton Loading(Shimmer)
+    implementation(libs.shimmer)
 
     implementation(libs.timber)
 }
