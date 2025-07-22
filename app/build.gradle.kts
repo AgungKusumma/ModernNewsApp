@@ -64,5 +64,8 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.interceptor)
 
+    // ViewModel
+    implementation(libs.viewmodel)
+
     implementation(libs.timber)
 }
