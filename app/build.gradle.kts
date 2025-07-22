@@ -17,6 +17,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"${project.findProperty("BASE_URL")}\"")
+        buildConfigField("String", "NEWS_API_KEY", "\"${project.findProperty("NEWS_API_KEY")}\"")
     }
 
     buildTypes {
@@ -55,6 +58,11 @@ dependencies {
     // Hilt
     implementation(libs.hilt)
     kapt(libs.hiltSupport)
+
+    // Network
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.interceptor)
 
     implementation(libs.timber)
 }
