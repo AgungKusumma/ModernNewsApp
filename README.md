@@ -34,7 +34,7 @@ ModernNewsApp is a simple news reader Android application that displays the late
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/ModernNewsApp.git
+   git clone https://github.com/AgungKusumma/ModernNewsApp.git
    ```
 2. Open the project in Android Studio
 
