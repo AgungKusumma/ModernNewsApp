@@ -73,6 +73,11 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.interceptor)
 
+    // Room (Database)
+    implementation(libs.roomRuntime)
+    implementation(libs.roomKtx)
+    kapt(libs.roomCompiler)
+
     // ViewModel
     implementation(libs.viewmodel)
 

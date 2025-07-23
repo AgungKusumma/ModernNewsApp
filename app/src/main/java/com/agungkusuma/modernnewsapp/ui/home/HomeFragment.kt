@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.agungkusuma.modernnewsapp.common.state.UiState
 import com.agungkusuma.modernnewsapp.databinding.FragmentHomeBinding
 import com.agungkusuma.modernnewsapp.ui.adapter.NewsAdapter
+import com.agungkusuma.modernnewsapp.ui.history.HistoryViewModel
+import com.agungkusuma.modernnewsapp.utils.toSavedArticle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,6 +24,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
+    private val historyViewModel: HistoryViewModel by viewModels()
 
     private lateinit var newsAdapter: NewsAdapter
 
@@ -41,6 +44,7 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         newsAdapter = NewsAdapter { article ->
+            historyViewModel.saveArticle(article.toSavedArticle())
             val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(article)
             findNavController().navigate(action)
         }
