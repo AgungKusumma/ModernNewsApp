@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.agungkusuma.modernnewsapp.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -18,10 +18,16 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.agungkusuma.modernnewsapp.ui.detail.DetailFragment"
-        android:label="Detail">
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="article"
             app:argType="com.agungkusuma.modernnewsapp.data.remote.model.Article" />
     </fragment>
 
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.agungkusuma.modernnewsapp.ui.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
 </navigation>
