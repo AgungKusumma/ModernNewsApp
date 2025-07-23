@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agungkusuma.modernnewsapp.common.state.UiState
 import com.agungkusuma.modernnewsapp.databinding.FragmentHomeBinding
@@ -40,7 +41,8 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         newsAdapter = NewsAdapter { article ->
-            // findNavController().navigate()
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(article)
+            findNavController().navigate(action)
         }
         binding.rvBigNews.apply {
             layoutManager = LinearLayoutManager(requireContext())

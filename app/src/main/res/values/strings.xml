@@ -7,4 +7,15 @@
 
     <!-- Small News -->
     <string name="small_news_title">Small News Title</string>
+
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="content">Content</string>
+    <string name="read_more">Read More</string>
+
+    <string name="author_unknown">Unknown Author</string>
+    <string name="no_description">No description available</string>
+    <string name="no_content">No content available</string>
 </resources>

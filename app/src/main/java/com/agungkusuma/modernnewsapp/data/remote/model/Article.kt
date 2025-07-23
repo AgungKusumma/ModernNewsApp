@@ -1,7 +1,10 @@
 package com.agungkusuma.modernnewsapp.data.remote.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Article(
     @SerializedName("author")
     val authorName: String?,
@@ -23,4 +26,4 @@ data class Article(
 
     @SerializedName("content")
     val fullContent: String?
-)
+) : Parcelable
