@@ -25,6 +25,7 @@ dataStore           = "1.0.0"
 lottieAnimation     = "6.6.2"
 room                = "2.5.2"
 shimmer             = "0.5.0"
+legacySupportV4 = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -55,6 +56,7 @@ roomRuntime                 = { group = "androidx.room", name = "room-runtime", 
 roomCompiler                = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 roomKtx                     = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 shimmer                     = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

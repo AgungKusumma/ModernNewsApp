@@ -3,6 +3,7 @@
 
     <string name="home">Home</string>
     <string name="search">Search</string>
+    <string name="history">History</string>
 
     <!-- Big News -->
     <string name="big_news_title">News Title</string>

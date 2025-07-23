@@ -34,4 +34,11 @@
             android:id="@+id/action_searchFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.agungkusuma.modernnewsapp.ui.history.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history"/>
+
 </navigation>
