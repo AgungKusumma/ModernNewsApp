@@ -8,4 +8,6 @@ class NewsRepositoryImpl @Inject constructor(
 ) : NewsRepository {
 
     override suspend fun getTopHeadlines() = apiService.getTopHeadlines()
+
+    override suspend fun searchNews(query: String) = apiService.searchNews(query = query)
 }

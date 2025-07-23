@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.newsState.collect { state ->
                 when (state) {
+                    is UiState.Idle -> {}
                     is UiState.Loading -> {
                         rvBigNews.visibility = View.GONE
                         shimmerLayout.visibility = View.VISIBLE

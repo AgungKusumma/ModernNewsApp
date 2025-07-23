@@ -1,60 +1,93 @@
 package com.agungkusuma.modernnewsapp.ui.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.agungkusuma.modernnewsapp.R
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.agungkusuma.modernnewsapp.common.state.UiState
+import com.agungkusuma.modernnewsapp.databinding.FragmentSearchBinding
+import com.agungkusuma.modernnewsapp.ui.adapter.NewsAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: SearchViewModel by viewModels()
+    private lateinit var newsAdapter: NewsAdapter
+
+    private var searchJob: Job? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    ): View {
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupRecyclerView()
+        setupSearchInput()
+        observeSearchResult()
+    }
+
+    private fun setupRecyclerView() {
+        newsAdapter = NewsAdapter { article ->
+            val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(article)
+            findNavController().navigate(action)
+        }
+        binding.rvSearchResult.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = newsAdapter
+        }
+    }
+
+    private fun setupSearchInput() {
+        binding.etSearch.addTextChangedListener { text ->
+            searchJob?.cancel()
+            searchJob = lifecycleScope.launch {
+                delay(500) // debounce
+                val query = text.toString()
+                if (query.isNotEmpty()) {
+                    viewModel.searchNews(query)
                 }
             }
+        }
+    }
+
+    private fun observeSearchResult() {
+        lifecycleScope.launch {
+            viewModel.searchState.collect { state ->
+                when (state) {
+                    is UiState.Idle -> {}
+                    is UiState.Loading -> binding.progressBar.visibility = View.VISIBLE
+                    is UiState.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        newsAdapter.submitList(state.data)
+                    }
+                    is UiState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        searchJob?.cancel()
+        _binding = null
     }
 }
